@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画板</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="100" height="100"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+        const htmlNode = document.documentElement;
+        // set width and height
+        const { clientWidth, clientHeight } = htmlNode;
+        canvas.width = clientWidth;
+        canvas.height = clientHeight;
+
+        // 设置 canvas 的相关样式
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = 'none';
+        ctx.lineWidth = 6;
+        ctx.lineCap = 'round';
+
+
+        // 标志设置
+        // 是否是移动端
+        let isDesktop = false;
+
+        // document.documentElement.ontouchstart 桌面端为 undefined，移动端为 null
+        if (htmlNode.ontouchstart === undefined) {
+            // 桌面端
+            isDesktop = true;
+        }
+
+        // 是否正在绘制  
+        let painting = false;
+
+        // 存储移动时的上一个位置
+        let lastPos = null;
+
+        // 桌面端
+        if (isDesktop) {
+            canvas.onmousedown = (e) => {
+                painting = true;
+                const { clientX: x, clientY: y } = e;
+                lastPos = { x, y };
+            }
+            canvas.onmousemove = (e) => {
+                if (painting === true) {
+                    const { clientX, clientY } = e;
+                    const { x, y } = lastPos;
+                    drawLine(x, y, clientX, clientY);
+                    lastPos = { x: clientX, y: clientY };
+                }
+            }
+            canvas.onmouseup = () => {
+                painting = false;
+            }
+            // 移动端
+        } else {
+            canvas.ontouchstart = (e) => {
+                const { clientX: x, clientY: y } = e.touches[0];
+                lastPos = { x, y };
+            }
+            canvas.ontouchmove = (e) => {
+                const { clientX, clientY } = e.touches[0];
+                const { x, y } = lastPos;
+                drawLine(x, y, clientX, clientY);
+                lastPos = { x: clientX, y: clientY };
+
+            }
+        }
+
+        let drawLine = (x1, y1, x2, y2) => {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        };
+
+    </script>
+</body>
+
+</html>
