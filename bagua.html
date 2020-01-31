@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画八卦图</title>
+
+</head>
+
+<body>
+    <style class="style"></style>
+    <div class="html"></div>
+    <div class="show">
+        <div class="bagua">
+            <div class="bagua-mid">
+                <div class="bagua-inner"></div>
+            </div>
+            <div class="bagua-mid">
+                <div class="bagua-inner"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let styleStr = `
+/* 下面来画一个八卦图 */
+
+/* 去掉 body 默认样式，设置基准长度 */
+
+body {
+    margin: 0;
+    --len: 200px;
+}
+/* 上面是代码区，下面是展示区 */
+
+.html,
+.show {
+    height: 50vh;
+    display: flex;
+    box-sizing: border-box;
+    display: block;
+    overflow: auto;
+}
+
+.show {
+    padding-top: calc(var(--len)/3);
+    border-top: 2px solid black;
+}
+
+/* 最大的圆，左白右黑 */
+
+.bagua {
+    width: var(--len);
+    height: var(--len);
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-image: linear-gradient(90deg, #fff 0%, #fff 50%, #000 50%, #000 100%);
+}
+
+/* 两个中间的圆，上黑下白 */
+
+.bagua-mid {
+    display: flex;
+    width: calc(var(--len)/2);
+    height: calc(var(--len)/2);
+    margin: auto;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.bagua-mid:first-of-type {
+    background-color: #000;
+}
+
+/* 两个最里面的圆，上白下黑 */
+
+.bagua-inner {
+    width: calc(var(--len)/6);
+    height: calc(var(--len)/6);
+    margin: auto;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.bagua-mid:first-of-type .bagua-inner {
+    background-color: #fff;
+}
+`;
+        // 显示到第几个字符
+        let index = 0;
+        // 上一次显示的字符
+        let lastStr = '';
+        showStyle.call(null);
+        function showStyle() {
+            const htmlNode = document.getElementsByClassName('html')[0];
+            const styleNode = document.getElementsByClassName('style')[0];
+            const strLen = styleStr.length;
+            setTimeout(() => {
+                lastStr += getTrueStr.call(null, styleStr[index]);
+                htmlNode.innerHTML = lastStr;
+                htmlNode.scrollTo(0, 10000);
+                styleNode.innerHTML = styleStr.substring(0, index);
+                index++;
+                if (index < strLen) {
+                    showStyle.call(null);
+                } else {
+                    console.log('end');
+                }
+
+            }, 0);
+        }
+        function getTrueStr(str) {
+            if (str === `\n`) return `<br>`;
+            if (str === ` `) return `&nbsp;`;
+            return str;
+        }
+
+    </script>
+</body>
+
+</html>
