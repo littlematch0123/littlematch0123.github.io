@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+        <div class="red">red</div>
+        <div class="blue">blue</div>
+        <div class="red">red</div>
+    </div>
+    <script src="dom.js"> </script>
+    <script>
+        const div = dom.find('#test>.red')[0] // 获取对应的元素
+        dom.style(div, 'color', 'red') // 设置 div.style.color
+
+        const divList = dom.find('.red') // 获取多个 div.red 元素
+        dom.each(divList, (n) => console.log(n)) // 遍历 divList 里的所有元素
+
+    </script>
+</body>
+
+</html>
