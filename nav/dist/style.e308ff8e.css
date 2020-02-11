@@ -1,0 +1,149 @@
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+html{
+    font-size: 100px;
+}
+body{
+    margin: 0;
+    background-color: #eee;
+    font-size: 0.12rem;
+    line-height: 1.5;
+    color:#222;
+}
+p,dl,dd{
+    margin: 0;
+}
+button,input{box-sizing: border-box;padding: 0;border: none;background: none;}
+.fl{float: left;}
+.fr{float: right;}
+.clear:before,.clear:after{content:"";display:table;}
+.clear:after{clear:both;}
+.clear{zoom:1}
+
+
+.hd{
+    font-size: 0.18rem;
+    max-width: 600px;
+    margin: 30px auto;
+}
+.hd-form{
+    display: flex;
+    margin: 0 30px;
+}
+.hd-input, .hd-btn{
+    line-height: 3;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+.hd-input{
+    flex: 1;
+    margin-right: 10px;
+    background-color: #fff;
+}
+.hd-btn{
+    color: #fff;
+    background-color: #0282b9;
+    cursor: pointer;
+}
+.main{
+    position: relative;
+    font-size: 0.20rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.main-nav  dl{
+    position: relative;
+    box-sizing: border-box;
+    width: 46%;
+    margin: 2%;
+    padding: 16px 0;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+@media (min-width: 500px) {
+    .main-nav  dl {
+        width: 23%;
+        margin: 1%;
+    }
+  }
+.main-nav  dt{
+    font-size: 60px;
+    text-transform: uppercase;
+}
+.main-nav  dd{
+    font-size: 16px;
+}
+.main-nav-more{
+    position: absolute;
+    top: 0;
+    right: 0;
+    fill: rgba(0, 0, 0, 0.4);
+}
+
+.main-add{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    fill: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.module{
+    display: none;
+}
+
+.module-box {
+    position: absolute;
+    top: 30%;
+    left: 20px;
+    right: 20px;
+    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #eee;
+}
+
+.module-input {
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 3;
+    padding: 0 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.16rem;
+}
+
+.module-btnGroup .btn {
+    cursor: pointer;
+    padding: 0px 10px;
+    border-radius: 4px;
+    font-size: 0.16rem;
+    line-height: 0.32rem;
+    margin: 20px 10px 10px;
+}
+
+.btn_delete {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.btn_done {
+    color: #fff;
+    background-color: #0069d9;
+}
+
+.btn_cancel {
+    color: #212529;
+    background-color: #aaa;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
