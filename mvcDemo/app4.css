@@ -1,0 +1,17 @@
+.circle {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.circle:hover{
+    animation: change 1s infinite linear alternate;
+}
+@keyframes change {
+    0% {
+        background-color: aquamarine;
+    }
+    100% {
+        background-color: blueviolet;
+    }
+}

@@ -1,0 +1,7 @@
+#app2{overflow: hidden;}
+.nav-tit{display: flex;margin-left: -1px;height: 40px;line-height: 40px;text-align: center;background-color: #cecece;overflow: hidden;}
+.nav-titI{cursor: pointer; flex: 1; margin-left: 1px; background-color: #f1f1f1;}
+.nav-txt{text-indent: 2em; line-height: 2;}
+.nav-txtI{height: 200px;display: none;}
+.nav-titI_active{background-color: #fafafa;}
+.nav-txtI_active{display:block;}

@@ -1,0 +1,9 @@
+.square{
+    height: 15vw;
+    width: 15vw;
+    border: 2px solid black;
+    transition: .2s transform;
+}
+.square.active{
+    transform: translateX(200px);
+}
